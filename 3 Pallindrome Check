@@ -1,0 +1,31 @@
+public class Basic_maths_pallindrome_check_3 {
+    public static boolean isPalindrome(int x) {
+        int reverse = 0;
+        int original = x;
+
+        if (x < 0) {
+            return false;
+        }
+
+        while (x != 0) {
+            int lastdigit = x % 10;
+            x = x / 10;
+            reverse = (reverse * 10) + lastdigit;
+        }
+
+        return reverse == original;
+    }
+
+    public static void main(String[] args) {
+        int x = 121;
+        System.out.println(isPalindrome(x));
+    }
+}
+
+/*
+Time Complexity: O(log10(n))   // one iteration per digit
+Space Complexity: O(1)         // only constant variables used
+
+Output:
+true
+*/
