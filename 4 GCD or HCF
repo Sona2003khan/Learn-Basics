@@ -1,0 +1,46 @@
+public class Basic_maths_GCD_HCF_4 {
+
+    // Euclidean algorithm (efficient way)
+    public static int gcd(int n, int m) {
+        while (n > 0 && m > 0) {
+            if (n > m) {
+                n = n % m;
+            } else {
+                m = m % n;
+            }
+        }
+        if (n == 0) {
+            return m;
+        }
+        return n;
+    }
+
+    // Brute-force method
+    public static int hcf(int n, int m) {
+        int gcd = 1;
+        for (int i = Math.min(n, m); i >= 1; i--) { // small fix: use min(n, m)
+            if (n % i == 0 && m % i == 0) {
+                gcd = i;
+                break;
+            }
+        }
+        return gcd;
+    }
+
+    public static void main(String[] args) {
+        int n = 6;
+        int m = 20;
+
+        System.out.println(gcd(n, m));  // Output: 2
+        // System.out.println(hcf(n, m));  // Output: 2
+    }
+}
+
+/*
+Time Complexity:
+- gcd() using Euclidean Algorithm: O(log(min(n, m)))
+- hcf() brute force method: O(min(n, m))
+
+Space Complexity:
+- Both methods use O(1) extra space
+*/
