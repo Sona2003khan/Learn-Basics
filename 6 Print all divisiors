@@ -1,0 +1,24 @@
+public class Basic_maths_ALL_Divisior_6 {
+
+    public static void print_all_divisiors(int n){
+
+        for(int i = 1; i * i <= n; i++){   // start from 1
+            if(n % i == 0){
+                System.out.println(i + " ");
+                if((n / i) != i){
+                    System.out.println(n / i);
+                }
+            }
+        }
+
+    }
+
+    public static void main(String[] args) {
+        print_all_divisiors(36);
+    }
+}
+
+/*
+Time Complexity: O(√n), because we iterate only up to √n and print both divisors.
+Space Complexity: O(1), since only a few variables are used.
+*/
