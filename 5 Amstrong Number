@@ -1,0 +1,29 @@
+public class Basic_maths_Amstrong_number_5 {
+
+    public static boolean Amstrong_number(int x){
+        
+        int sum=0;
+        int original = x;
+
+        int no_of_digit = String.valueOf(x).length();
+
+        while (x != 0) {
+            int lastdigit = x % 10;
+            sum = sum + (int)Math.pow(lastdigit, no_of_digit);
+            x = x/10;
+        }
+        
+        return sum == original;
+    }
+
+    public static void main(String[] args) {
+        int x= 1634;                                                          // true
+       // int x= 34;                                                          // false
+        System.out.println(Amstrong_number(x));
+    }
+}
+
+/*
+Time Complexity: O(d), where d is the number of digits in x.
+Space Complexity: O(1), as only a few variables are used.
+*/
