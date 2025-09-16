@@ -6,7 +6,7 @@ public class Basic_maths_Amstrong_number_5 {
         int original = x;
 
         int no_of_digit = String.valueOf(x).length();
-
+ 
         while (x != 0) {
             int lastdigit = x % 10;
             sum = sum + (int)Math.pow(lastdigit, no_of_digit);
