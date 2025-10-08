@@ -1,0 +1,36 @@
+public class Basic_recursion_reverse_an_array_8 {
+    
+    public static void REcursion_reverse(int i, int nums[], int n) {
+        if (i >= n / 2) {
+            return;
+        }
+        swap(nums, i, n - i - 1);
+        REcursion_reverse(i + 1, nums, n);
+    }
+
+    public static void swap(int[] nums, int right, int left) {
+        int temp = nums[right];
+        nums[right] = nums[left];
+        nums[left] = temp;
+    }
+
+    public static void main(String[] args) {
+        int nums[] = {1, 2, 3, 4, 5};
+        int n = nums.length;
+        REcursion_reverse(0, nums, n);
+
+        for (int i = 0; i < n; i++) {
+            System.out.print(nums[i] + " ");
+        }
+    }
+}
+
+/*
+⏱ Time Complexity:  O(n)
+   → Each recursive call swaps one pair of elements, 
+     and there are n/2 swaps → O(n) overall.
+
+💾 Space Complexity: O(n)
+   → Due to recursive call stack (function calls up to n/2 levels deep),
+     so space = O(n) in recursion terms.
+*/
