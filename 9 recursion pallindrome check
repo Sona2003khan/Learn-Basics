@@ -1,0 +1,36 @@
+public class Basic_recursion_pallindrome_chech_9 {
+    public static boolean isPalindrome(String s) {
+        int n = s.length();
+        // Clean string: keep only alphanumeric and convert to lowercase
+        char[] arr = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase().toCharArray();
+        return recursion(arr, 0);
+    }
+
+    public static boolean recursion(char s[], int i) {
+        int n = s.length;
+        if (i >= n / 2) {
+            return true; // All characters matched
+        }
+        if (s[i] != s[n - i - 1]) {
+            return false; // Mismatch found
+        }
+        return recursion(s, i + 1); // Check next pair
+    }
+
+    public static void main(String[] args) {
+        String s = "A man, a plan, a canal: Panama";
+        System.out.println(isPalindrome(s));
+    }
+}
+
+/*
+⏱ Time Complexity:  O(n)
+   - Cleaning the string: O(n)
+   - Recursion to check palindrome: O(n/2) → O(n)
+   - Total: O(n)
+
+💾 Space Complexity: O(n)
+   - char[] array stores cleaned string → O(n)
+   - Recursive call stack depth: O(n/2) → O(n)
+   - Total space: O(n)
+*/
