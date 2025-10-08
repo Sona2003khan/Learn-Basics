@@ -1,0 +1,23 @@
+public class Basic_recursion_fibonacci_10 {
+    public static int recursion(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        return recursion(n - 1) + recursion(n - 2);
+    }
+
+    public static void main(String[] args) {
+        int n = 4;
+        System.out.println(recursion(n));
+    }
+}
+
+/*
+⏱ Time Complexity: O(2^n)
+   - Each call splits into 2 recursive calls
+   - Number of calls grows exponentially with n
+
+💾 Space Complexity: O(n)
+   - Recursive call stack depth goes up to n
+   - So space used by recursion is O(n)
+*/
