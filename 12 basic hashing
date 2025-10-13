@@ -1,0 +1,80 @@
+import java.util.Arrays;
+import java.util.HashMap;
+
+public class Basic_maths_hashing {
+
+    // Array frequency using normal array
+    // 🕒 Time Complexity: O(n + m)
+    // 💾 Space Complexity: O(m)
+    public static int[] frequ(int nums[]) {             
+        int n = nums.length;
+        int max_ele = 0;
+
+        for (int max : nums) {
+            max_ele = Math.max(max_ele, max);
+        }
+
+        int arr[] = new int[max_ele + 1];
+
+        for (int i = 0; i < n; i++) {
+            arr[nums[i]]++;
+        }
+        return arr;
+    }
+
+    // String frequency using array (a-z)
+    // 🕒 Time Complexity: O(n)
+    // 💾 Space Complexity: O(1) — fixed 26 letters
+    public static int[] frequ_string(String s) {             
+        int n = s.length();
+        int arr[] = new int[26];
+
+        for (int i = 0; i < n; i++) {
+            arr[s.charAt(i) - 'a']++;
+        }
+        return arr;
+    }
+
+    // Array frequency using HashMap
+    // 🕒 Time Complexity: O(n)
+    // 💾 Space Complexity: O(k) — k = distinct elements
+    public static void freq_hash(int nums[]) {                     
+        int n = nums.length;
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < n; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+        }
+
+        for (int num : map.keySet()) {
+            System.out.println(num + " " + map.get(num));
+        }
+    }
+
+    // String frequency using HashMap
+    // 🕒 Time Complexity: O(n)
+    // 💾 Space Complexity: O(k) — k = distinct characters
+    public static void freq_hash(String s) {                       
+        int n = s.length();
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < n; i++) {
+            map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
+        }
+
+        for (char ch : map.keySet()) {
+            System.out.println(ch + " " + map.get(ch));
+        }
+    }
+
+    public static void main(String[] args) {
+        int nums[] = {1, 2, 3, 1, 5, 1};
+        String s = "abcdaarttnm";
+
+        System.out.println(Arrays.toString(frequ(nums)));        // Array frequency (array method)
+        System.out.println(Arrays.toString(frequ_string(s)));    // String frequency (array method)
+
+        freq_hash(nums);   // Array frequency (HashMap method)
+        freq_hash(s);      // String frequency (HashMap method)
+    }
+}
